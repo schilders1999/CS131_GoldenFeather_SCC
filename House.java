@@ -60,7 +60,7 @@ public class House extends Inventory
 	public House() 
 	{
 		//Method to start game.
-		kitchen();
+		backstory();
 		
 		//House Mods
 		powerOff = false;
@@ -295,7 +295,7 @@ public class House extends Inventory
 						if (normalDifficulty == false)
 						{
 							System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
-							frontHouse();
+							frontLeftWindow();
 						}
 						else if (normalDifficulty == true)
 						{
@@ -499,7 +499,7 @@ public class House extends Inventory
 						if (normalDifficulty == false)
 						{
 							System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
-							frontHouse();
+							leftSideWindow();
 						}
 						else if (normalDifficulty == true)
 						{
@@ -574,7 +574,7 @@ public class House extends Inventory
 			
 			else if (answer.equalsIgnoreCase("Search surroundings for anything useful") || answer.equalsIgnoreCase("search") || answer.equalsIgnoreCase("(3)") || answer.equalsIgnoreCase("3"))
 			{
-				System.out.println("It's too dark here to see anything.");
+				System.out.println("I can't find anything around me. \nI should move inside.");
 			}
 			
 			else if (answer.equalsIgnoreCase("Open Inventory") || answer.equalsIgnoreCase("Inventory") || answer.equalsIgnoreCase("(4)") || answer.equalsIgnoreCase("4"))
@@ -815,7 +815,7 @@ public class House extends Inventory
 								if (normalDifficulty == false)
 								{
 									System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
-									frontHouse();
+									frontBathroom();
 								}
 								else if (normalDifficulty == true)
 								{
@@ -909,7 +909,7 @@ public class House extends Inventory
 								if (normalDifficulty == false)
 								{
 									System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
-									frontHouse();
+									frontBathroom();
 								}
 								else if (normalDifficulty == true)
 								{
@@ -1980,7 +1980,7 @@ public class House extends Inventory
 		
 		while (backpack[9] != "sledgehammer")
 		{
-			System.out.println("I reach a dead end with nothing but a sledehammer in the middle of the floor. \nShould I take a better look?");
+			System.out.println("I reach a dead end with nothing but a sledgehammer in the middle of the floor. \nShould I take a better look?");
 			System.out.println("\nPossible Moves:\n(1) Yes. \n(2) No.");
 				answer = scan.nextLine();
 				
@@ -3267,7 +3267,7 @@ public class House extends Inventory
 								if (normalDifficulty == false)
 								{
 									System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
-									frontHouse();
+									base21();
 								}
 								else if (normalDifficulty == true)
 								{
@@ -3294,7 +3294,7 @@ public class House extends Inventory
 								if (normalDifficulty == false)
 								{
 									System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
-									frontHouse();
+									base21();
 								}
 								else if (normalDifficulty == true)
 								{
@@ -3536,7 +3536,7 @@ public class House extends Inventory
 								if (normalDifficulty == false)
 								{
 									System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
-									frontHouse();
+									base31();
 								}
 								else if (normalDifficulty == true)
 								{
@@ -3563,7 +3563,7 @@ public class House extends Inventory
 								if (normalDifficulty == false)
 								{
 									System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
-									frontHouse();
+									base31();
 								}
 								else if (normalDifficulty == true)
 								{
