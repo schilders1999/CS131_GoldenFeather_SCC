@@ -1,7 +1,9 @@
 import java.util.Scanner;
+import java.awt.*;  
+import javax.swing.*; 
 /**
- * This class contains some of the methods necessary for starting and ending the game as well as a method that allows the user to set their desired difficulty
- *   at the start of the game.
+ * This class contains some of the methods necessary for starting and ending the game, a method that allows the user to set their desired difficulty
+ *   at the start of the game, and a method to display the games' maps.
  * 
  * @author  Spencer Childers
  * @version  1.0
@@ -122,6 +124,45 @@ public class gameFunctions
 			System.out.println("\nDifficulty set to Normal.");
 			normalDifficulty = true;
 		}	
+	}
+	
+	
+	
+	
+	
+	/**
+	 * This method is used to display the two maps that are used within the game. 
+	 */
+	public void displayMaps()
+	{
+		JFrame basement = new JFrame("Basement Map");
+		JFrame house = new JFrame("House Map");
+		
+		ImageIcon houseMap = new ImageIcon (new ImageIcon("Map of House.jpg").getImage().getScaledInstance(1000, 600, Image.SCALE_DEFAULT));
+		ImageIcon basementMap = new ImageIcon (new ImageIcon("Map of Basement.jpg").getImage().getScaledInstance(1100, 660, Image.SCALE_DEFAULT));
+		
+		JLabel houseLabel , basementLabel;
+		
+		JPanel subPanel1 = new JPanel();
+		subPanel1.setPreferredSize(new Dimension(400,400));
+		subPanel1.setBackground(Color.WHITE);
+		
+		JPanel subPanel2 = new JPanel();
+		subPanel2.setPreferredSize(new Dimension(400,400));
+		subPanel2.setBackground(Color.WHITE);
+		
+		houseLabel = new JLabel (null , houseMap , SwingConstants.CENTER);
+		basementLabel = new JLabel (null , basementMap , SwingConstants.CENTER);
+		
+		subPanel1.add(houseLabel);
+		subPanel2.add(basementLabel);
+		
+		house.setSize(1000,700);
+		house.setVisible(true);
+		house.add(subPanel1);
+		basement.setSize (1000,700);
+		basement.setVisible(true);
+		basement.add(subPanel2);
 	}
 		
 }
