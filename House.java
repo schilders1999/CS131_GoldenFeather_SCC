@@ -1,73 +1,69 @@
-import java.util.Scanner;
 /**
- * This class contains all of the code for the various locations found within the game. House also extends the Inventory class so that the
- * player may have an inventory that interacts with the game world.
+ * This class contains all of the code for the various locations found within the game. House also extends the Inventory class (which extends the gameFunctions class) 
+ * so that the player may have an inventory that interacts with the game world.
  * 
  * @author Spencer Childers
  * @version 1.0
- * @since 4/15/2021
+ * @since 18 April 2021
  */
 public class House extends Inventory
 {
-	Scanner scan = new Scanner(System.in);
-	public String answer;
-	public boolean stationary;
+	public boolean stationary; //boolean value that is inserted into while loops at the different locations in the game. When true, the various while loops break.
 	
 	//House Modifiers:
-	public boolean powerOff;
-	public boolean copsCalled;
-	public boolean dogBite;
-	public boolean pictureFrameOff;
-	public boolean approachHouse;
-	public boolean findFuseBox;
-	public boolean firstRightSideWindow;
-	public boolean firstBedroomEntrance;
-	public boolean firstBedroomBottomRight;
-	public boolean firstFrontBathroom;
-	public boolean firstKitchen;
-	public boolean firstLivingRoom;
-	public boolean firstMasterBedroom;
-	public boolean firstMasterBathroom;
-	public boolean firstGarage;
-	public boolean firstBackyard;
-	public boolean firstDogHouse;
-	public boolean secretPassageFound;
-	public boolean seenWalnutChest;
-	public boolean safeOpen;
-	public boolean firstSpikeTrap;
+	public boolean powerOff; //boolean value for the power supplied to the electrical knob in the front bathroom. If true, the power supplied to the knob is off.
+	public boolean dogBite; //boolean value for whether or not the play has been bit by the dog in the backyard. If true, the player has been bit.
+	public boolean pictureFrameOff; //boolean value that changes the script of the game. True if the player has discovered the knob leading to the secret basement.
+	public boolean approachHouse; //boolean value that changes the script of when the player first approaches the front door.
+	public boolean findFuseBox; //boolean value that changes the dialogue after the player first discovers the electrical box on the western side of the house.
+	public boolean firstRightSideWindow; //boolean value that changes the dialogue after the player first discovers the window leading to the child's room.
+	public boolean firstBedroomEntrance; //boolean value that changes the dialogue after the player first enters the child's bedroom.
+	public boolean firstBedroomBottomRight;  //boolean value that changes the dialogue after the player first discovers the smelly bedroom on the bottom right of the house.
+	public boolean firstFrontBathroom;  //boolean value that changes the dialogue after the player first discovers the bathroom at the front of the house.
+	public boolean firstKitchen;  //boolean value that changes the dialogue after the player first discovers the kitchen.
+	public boolean firstLivingRoom;  //boolean value that changes the dialogue after the player first discovers the living room.
+	public boolean firstMasterBedroom;  //boolean value that changes the dialogue after the player first discovers the master bedroom.
+	public boolean firstMasterBathroom;  //boolean value that changes the dialogue after the player first discovers the master bathroom.
+	public boolean firstGarage;  //boolean value that changes the dialogue after the player first discovers the garage.
+	public boolean firstBackyard;  //boolean value that changes the dialogue after the player first discovers the backyard.
+	public boolean firstDogHouse;  //boolean value that changes the dialogue after the player first encounters the dog house.
+	public boolean secretPassageFound;  //boolean value that changes the dialogue after the player first opens the door to the secret passage.
+	public boolean seenWalnutChest;  //boolean value that changes the dialogue after the player first tries to inspect the walnut chest in the master bedroom.
+	public boolean safeOpen;  //boolean value that changes the dialogue of entering the garage after the safe has been opened.
 		
 	//Basement modifiers:
-	public int x,y;
-	public boolean spikeTrapOff;
-	public boolean wallEastBroken;
-	public boolean wallSouthBroken;
-	public boolean startOfSearch;
-	public boolean justMovingIn;
-	public boolean justReachBasement;
-	public boolean feelingLost;
-	public boolean enterBrokenWall;
-	public boolean Neg1Neg2Desc;
-	public boolean Neg1Neg3Desc;
-	public boolean justSeeingMap;
-	public boolean spikeTrapFirstTime;
-	public boolean crossingSpikes;
-	public boolean finalWallBroken;
-	public boolean hasGoldFeather;
-	public boolean switchLever;
+	public int x,y;  //integer values for the various positions of the basement. 
+	public boolean spikeTrapOff;  //boolean value that changes the dialogue after the player has turned off the spike trap. This is used once the player returns to the trap.
+	public boolean wallEastBroken;  //boolean value that is true if the eastern wall by the stairs in the basement is broken.
+	public boolean wallSouthBroken;  //boolean value that is true if the southern wall by the stairs in the basement is broken.
+	public boolean startOfSearch;  //boolean value that changes the dialogue after the player first leaves the stairwell in the basement.
+	public boolean justMovingIn;  //boolean value that changes the dialogue after the player first arrives at one of the two possible movable locations from the basement stairwell.
+	public boolean justReachBasement;  //boolean value that changes the dialogue after the player first enters the basement.
+	public boolean feelingLost;  //boolean value that changes the dialogue after the player first reaches position (1,1) in the basement.
+	public boolean enterBrokenWall;  //boolean value that changes the dialogue after the player first enters one of the passages hidden behind the broken walls by the stairs in the basement.
+	public boolean Neg1Neg2Disc;  //boolean value that changes the dialogue after the player enters position (-1,-2) in the basement.
+	public boolean Neg1Neg3Disc;  //boolean value that changes the dialogue after the player enters position (-1,-3) in the basement.
+	public boolean justSeeingMap; //boolean value that changes the dialogue after the player first discovers the map in the basement indicating there are hidden passages.
+	public boolean spikeTrapFirstTime; //boolean value that turns true once the player hears the sound of the spike trap activating.
+	public boolean crossingSpikes; //boolean value that gives different dialogue options for if the player has seen that the lever has closed the spike trap.
+	public boolean crossedTrapBefore; //boolean value that gives different dialogue options for if the player has crossed the spike trap before.
+	public boolean hasGoldFeather; //boolean value for determining if player has acquired the golden feather. If true, the game terminates, congratulating the player on their victory.
+	public boolean firstSpikeTrap; //boolean value that is false if the player hasn't seen the spike trap before. Turns true after seeing trap.
+	public boolean visitLever; //boolean value for having visited the lever in the basement before.
+	public boolean finalWallBroken; //boolean value that changes the dialogue after the player first breaks the wall concealing the golden feather.
 	
 	
 	
-	
-	
+	/**
+	 * Constructor that is used to initialize all of the boolean values to their desired values. Also starts the game by calling the backstory method.
+	 */
 	public House() 
 	{
 		//Method to start game.
-		backstory();
+		kitchen();
 		
-				
 		//House Mods
 		powerOff = false;
-		copsCalled = false;
 		dogBite = false;
 		pictureFrameOff = false;
 		approachHouse = false;
@@ -97,23 +93,28 @@ public class House extends Inventory
 		justMovingIn = false;
 		feelingLost = false;
 		enterBrokenWall = false;
-		Neg1Neg2Desc = false;
-		Neg1Neg3Desc = false;
+		Neg1Neg2Disc = false;
+		Neg1Neg3Disc = false;
 		justSeeingMap = false;
 		spikeTrapFirstTime = false;
 		crossingSpikes = false;
 		finalWallBroken = false;
 		hasGoldFeather = false;
 		firstSpikeTrap = false;
-		switchLever = false;
+		visitLever = false; 
+		crossedTrapBefore = false;
 		
 	}
 	
 	
-
+	
+	
+	
+	/**
+	 * This method is used to display the information regarding the player's mission.
+	 */
 	public void backstory() {
-		System.out.println("To move, use the number pad. \nAll available maps are given to the player at the start (only 2).\n\n\n ");
-		System.out.println("============================================================ \n\nMission: Golden Feather \nObjective: To acquire the multimillion dollar golden feather \nName: John Natasha \nTime of Day: 11:37 PM \nDate: August 18, 2009 \nChances of Success: Slim\n\n============================================================\n\n\n\n");
+		System.out.println("============================================================ \n\nMission: The Golden Feather \nObjective: To acquire the multimillion-dollar golden feather \nName: John Natasha \nTime of Day: 11:37 PM \nDate: August 18, 2009 \nChances of Success: Slim\n\n============================================================\n\n\n\n");
 		frontHouse();
 	}
 	
@@ -122,18 +123,29 @@ public class House extends Inventory
 				Start of methods for House portion of game.
 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/	
 	
+	
+	/**
+	 * This is the first position used in the game - the front door to the house. This method/position, along with the majority of the other methods, determines dialogue 
+	 *  options and and movement locations by a variety of if statements and player inputs. 
+	 *  Also, depending on the current value of boolean variables and the Strings stored in the backpack array, different statements/movement options will be available
+	 *  throughout the game.
+	 *  The player can move to the electrical panel or to the window to the right of the door from this position. A stone can be found here if the player searches their 
+	 *  surroundings. The player can also choose to back away from the house, ending the game. Also, the player can choose to lockpick the door and end the game this way
+	 *  too.
+	 *  The boolean variable approachHouse affects dialogue here.
+	 */
 	public void frontHouse()
 	{
 		stationary = true;		
 		
 		if (approachHouse == false)
 		{
-			System.out.println("As I approach the house, I begin to have reservations about this job. \nI know I made sure to scan the house from the street to ensure that I'd be alone, but I can't help but feel a strange presence emanating from this house. \nI soon dismiss any doubts and make my way to the door. \nHow could something of such value be contained in such a simple home?");
+			System.out.println("As I approach the house, I begin to have reservations about this job. \nI know I made sure to scan the house from the street to ensure that I'd be alone, but something doesn't sit right with me about this place. \nI soon dismiss any doubts and make my way to the door. \nHow could something of such value be contained in such a simple home?");
 			approachHouse = true;
 		}
 		else
 		{
-			System.out.println("I return to the front door and look around for anything of use.");
+			System.out.println("I return to the front door.");
 		}
 		
 		while (stationary == true)
@@ -150,10 +162,17 @@ public class House extends Inventory
 				if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("1") || answer.equalsIgnoreCase("(1)"))
 				{
 					System.out.println("After only seconds, I am able to unlock the front door. \nImmediately, an alarm system is set off. \nWithin minutes, the police arrive and escort me away.");
-					System.out.println("\n\n\n\t====GAME OVER====");
 					
-					//System.exit(0) automatically terminates the program when called upon.
-					System.exit(0);
+					if (normalDifficulty == false)
+					{
+						System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
+						frontHouse();
+					}
+					else if (normalDifficulty == true)
+					{
+						System.out.println("\n\n\n\t====GAME OVER====");
+						restartGame();
+					}
 				}
 				else if (answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("2") || answer.equalsIgnoreCase("(2)"))
 				{
@@ -172,8 +191,7 @@ public class House extends Inventory
 					System.out.println("I turn around and leave the scene, knowing that I made the right choice.");
 					System.out.println("\n\n\n\t====GAME OVER====");
 					
-					//System.exit(0) automatically terminates the program when called upon.
-					System.exit(0);
+					restartGame();
 				}
 				else if (answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("2") || answer.equalsIgnoreCase("(2)"))
 				{
@@ -203,7 +221,7 @@ public class House extends Inventory
 				}
 				else if (backpack [6] != "stone")
 				{
-					System.out.println("I search around the flowerbeds for anything of use. \nMaybe I could find a use for one of these small stones. \nShould I snag one?");
+					System.out.println("I search around the flowerbeds. \nMaybe I could find a use for one of these small stones. \nShould I snag one?");
 					System.out.println("\nPossible Moves:\n(1) Yes. \n(2) No.");
 						answer = scan.nextLine();
 						
@@ -231,7 +249,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method moves the player to the window that is to the right of the front door. There is nothing at this position, but the player can lose the game by busting through
+	 *   the window if they have the stone. The player can move to the front door or to the other window on the front of the house.
+	 */
 	public void frontLeftWindow()
 	{
 		stationary = true;
@@ -270,10 +291,17 @@ public class House extends Inventory
 					{
 						System.out.println("I remove the stone from my backpack and easily shatter the window. \nUnfortunately, I can guarantee the sound was heard by someone. \nI hurry inside.");
 						System.out.println("...\n...\n...\nShortly after entering, the police arrive and I am escorted away in cuffs.");
-						System.out.println("\n\n\n\t====GAME OVER====");
 						
-						//System.exit(0); terminates the program when called.
-						System.exit(0); 
+						if (normalDifficulty == false)
+						{
+							System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
+							frontHouse();
+						}
+						else if (normalDifficulty == true)
+						{
+							System.out.println("\n\n\n\t====GAME OVER====");
+							restartGame();
+						}
 						
 					}
 					else if (backpack [6] != "stone")
@@ -302,7 +330,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method moves the player to the right window on the front of the house. There is nothing here for the player. From here, the player can move to the window on the 
+	 *   eastern side of the house or to the window to the right of the front door.
+	 */
 	public void frontRightWindow()
 	{
 		stationary = true;
@@ -344,24 +375,28 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method moves the player to the electrical panel. This panel is used to power off the electricity that is running to the door knob covering the secret staircase to the
+	 *   basement. The player can move to the western window or to the front door from this position.
+	 *   The boolean variables findFuseBox and powerOff affect the dialogue here.
+	 */
 	public void electricalBox()
 	{
 		stationary = true;
 		if (findFuseBox == false)
 		{
-			System.out.println("While searching around the western side of the house, I come across a fuse box. Let me see what I can do.");
+			System.out.println("While searching around the western side of the house, I come across an electrical panel. \nLet me see what I can do.");
 			findFuseBox = true;
 		}
 		else if (findFuseBox == true)
 		{
-			System.out.println("I arrive back at the fuse box. \nWhat to do now?");
+			System.out.println("I arrive back at the electrical panel. \nWhat to do now?");
 		}
 			
 			
 		while (stationary == true)
 		{
-			System.out.println("\nPossible Moves:\n(1) Move north. \n(2) Return to the front door. \n(3) Inspect fuse box. \n(4) Open Inventory.");
+			System.out.println("\nPossible Moves:\n(1) Move north. \n(2) Return to the front door. \n(3) Inspect electrical panel. \n(4) Open Inventory.");
 				answer = scan.nextLine();
 			
 			if (answer.equalsIgnoreCase("Move North") || answer.equalsIgnoreCase("North") || answer.equalsIgnoreCase("N") || answer.equalsIgnoreCase("1") || answer.equalsIgnoreCase("(1)"))
@@ -378,7 +413,7 @@ public class House extends Inventory
 				frontHouse();
 			}
 			
-			else if (answer.equalsIgnoreCase("Inspect fuse box") || answer.equalsIgnoreCase("Inspect") || answer.equalsIgnoreCase("i") || answer.equalsIgnoreCase("3") || answer.equalsIgnoreCase("(3)"))
+			else if (answer.equalsIgnoreCase("Inspect electrical panel") || answer.equalsIgnoreCase("Inspect") || answer.equalsIgnoreCase("i") || answer.equalsIgnoreCase("3") || answer.equalsIgnoreCase("(3)"))
 			{
 				if (powerOff == true)
 				{
@@ -426,7 +461,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method moves the player to the window on the far left side of the house. There is nothing at this position, but the player can lose the game by busting through
+	 *   the window if they have the stone. The player can move to the electrical panel from here.
+	 */
 	public void leftSideWindow()
 	{
 		stationary = true;
@@ -457,10 +495,17 @@ public class House extends Inventory
 					{
 						System.out.println("I remove the stone from my backpack and easily shatter the window. \nUnfortunately, I can guarantee the sound was heard by someone. \nI hurry inside.");
 						System.out.println("...\n...\n...\nShortly after entering, the police arrive and I am escorted away in cuffs.");
-						System.out.println("\n\n\n\t====GAME OVER====");
 						
-						//System.exit(0); terminates the program when called.
-						System.exit(0); 
+						if (normalDifficulty == false)
+						{
+							System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
+							frontHouse();
+						}
+						else if (normalDifficulty == true)
+						{
+							System.out.println("\n\n\n\t====GAME OVER====");
+							restartGame();
+						}
 						
 					}
 					else if (backpack [6] != "stone")
@@ -479,7 +524,7 @@ public class House extends Inventory
 				System.out.println("I don't believe there is anything important here.");
 			}
 			
-			else if (answer.equalsIgnoreCase("Open Inventory") || answer.equalsIgnoreCase("Inventory") || answer.equalsIgnoreCase("(5)") || answer.equalsIgnoreCase("5"))
+			else if (answer.equalsIgnoreCase("Open Inventory") || answer.equalsIgnoreCase("Inventory") || answer.equalsIgnoreCase("(4)") || answer.equalsIgnoreCase("4"))
 			{
 				openInventory();
 			}
@@ -489,7 +534,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method moves the player to the outside of the window on the eastern side of the house. From this position, the player can move into the child's bedroom.
+	 *   There is nothing important in this location. 
+	 *   The boolean variable firstRightSideWindow affects dialogue here.
+	 */
 	public void rightSideWindow()
 	{
 		stationary = true;
@@ -538,7 +587,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method moves the player to the children's room. This is the first method used to move the player in to the house. From this position, the player can move back outside
+	 *   or to the eastern hallway. There is nothing of value here.
+	 *   The boolean variable firstBedroomEntrance affects dialogue.
+	 */
 	public void bedroomEntrance()
 	{
 		stationary = true;
@@ -587,7 +640,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the foul-smelling bedroom at the front right of the house. The player can move to the eastern hallway from this position.
+	 *   There is nothing of value in this room.
+	 *   The boolean variable firstBedroomBottomRight affects dialogue in this area.
+	 */
 	public void bedroomBottomRight()
 	{
 		stationary = true;
@@ -630,12 +687,15 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is used to move the player to the eastern hallway. From the hallway, the player can move to the kitchen, the front bathroom, the children's bedroom,
+	 *   and the foul smelling bedroom. There is not anything of value found at this position.
+	 */
 	public void rightHallway()
 	{
 		stationary = true;
 		
-		System.out.println("Now in the eastern hallway, I have easy access to the two bedrooms, the bathroom, and the kithen. \nWhere should I head to first?");
+		System.out.println("Now in the eastern hallway, I have easy access to the two bedrooms, the bathroom, and the kitchen. \nWhere should I head to first?");
 		
 		while (stationary == true)
 		{
@@ -682,7 +742,12 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is used to move the player to the bathroom at the front of the house. From the bathroom, the player can find the secret passage leading to the basement.
+	 *   This passage is blocked by an electrical door knob that must be powered off at the electrical panel outside of the house on its western side. From the bathroom,
+	 *   the player can move downstairs and to the eastern hallway.
+	 *   The boolean variables secretPassageFound, pictureFrameOff, firstFrontBathroom, and powerOff affect dialogue.
+	 */
 	public void frontBathroom()
 	{
 		stationary = true;
@@ -746,10 +811,17 @@ public class House extends Inventory
 							if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("1") || answer.equalsIgnoreCase("(1)"))
 							{
 								System.out.println("I move my hand towards the handle, but I am immediately thrown against the sink by a massive electrical shock. \nI sit uncomfortably beneath the sink as I feel my heartbeat come to a stop. \nI close my eyes and take my final breath.");
-								System.out.println("\n\n\n\t====GAME OVER====");
 								
-								//System.exit(0); terminates the program when called.
-								System.exit(0); 
+								if (normalDifficulty == false)
+								{
+									System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
+									frontHouse();
+								}
+								else if (normalDifficulty == true)
+								{
+									System.out.println("\n\n\n\t====GAME OVER====");
+									restartGame();
+								}
 							}
 							else if (answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("2") || answer.equalsIgnoreCase("(2)"))
 							{
@@ -833,10 +905,17 @@ public class House extends Inventory
 							if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("1") || answer.equalsIgnoreCase("(1)"))
 							{
 								System.out.println("I move my hand towards the handle, but I am immediately thrown against the sink by a massive electrical shock. \nI sit uncomfortably beneath the sink as I feel my heartbeat come to a stop. \nI close my eyes and take my final breath.");
-								System.out.println("\n\n\n\t====GAME OVER====");
 								
-								//System.exit(0); terminates the program when called.
-								System.exit(0); 
+								if (normalDifficulty == false)
+								{
+									System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
+									frontHouse();
+								}
+								else if (normalDifficulty == true)
+								{
+									System.out.println("\n\n\n\t====GAME OVER====");
+									restartGame();
+								}
 							}
 							else if (answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("2") || answer.equalsIgnoreCase("(2)"))
 							{
@@ -918,7 +997,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method moves the player to the kitchen. In the kitchen, the player can find the pork knuckle that is used to get the hexagonal disk without getting bit by the dog.
+	 *   From this position, the player can move to the western and eastern hallways, the living room, the master bedroom, the backyard, and the master bathroom.
+	 *   The boolean variable firstKitchen and the array element "pork knuckle" affect the dialogue options.
+	 */
 	public void kitchen()
 	{
 		stationary = true;
@@ -941,7 +1024,7 @@ public class House extends Inventory
 			
 			if (answer.equalsIgnoreCase("Look in the living room") || answer.equalsIgnoreCase("1") || answer.equalsIgnoreCase("(1)"))
 			{
-				System.out.println("I head east into the quaint living room");
+				System.out.println("I head east into the quaint living room.");
 				stationary = false;
 				livingRoom();
 			}
@@ -1015,7 +1098,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is used to move the player to the living room. There is nothing important here in this area. 
+	 * From this position, the player can move to the kitchen.
+	 * The boolean variable firstLivingRoom affects dialogue.
+	 */
 	public void livingRoom()
 	{
 		stationary = true;
@@ -1057,7 +1144,12 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is used to move the player to the master bedroom. In this room, the player can find the chest containing the crystal key. To get the key, the player must
+	 *   have the hexagonal disk found in the backyard. From the bedroom, the player can move to the master bathroom or the kitchen.
+	 *   The boolean variables seenWalnutChest and firstMasterBedroom affect the dialogue here. Dialogue is also altered if the player has the hexagonal disk and/or the 
+	 *   crystal key.
+	 */
 	public void masterBedroom()
 	{
 	stationary = true;
@@ -1094,57 +1186,65 @@ public class House extends Inventory
 			
 			else if (answer.equalsIgnoreCase("Search surroundings for anything useful") || answer.equalsIgnoreCase("search") || answer.equalsIgnoreCase("(3)") || answer.equalsIgnoreCase("3"))
 			{
-				if (backpack [5] != "hexagonal disk")
+				if (backpack [1] != "crystal key")
 				{
-					System.out.println("Immediately, a petite wooden chest to the side of the bed catches my eye. \nI approach the box and try opening it. \nI have no success, but I notice a large hexagonal hole in the center of its cover. \nI should search around some more.");
-					seenWalnutChest = true;
+					if (backpack [5] != "hexagonal disk")
+					{
+						System.out.println("Immediately, a petite wooden chest to the side of the bed catches my eye. \nI approach the box and try opening it. \nI have no success, but I notice a large hexagonal hole in the center of its cover. \nI should search around some more.");
+						seenWalnutChest = true;
+					}
+					
+					else if (backpack [5] == "hexagonal disk")
+					{
+						if (seenWalnutChest == false)
+						{
+							System.out.println("Immediately, a petite walnut chest to the side of the bed catches my eye. \nI approach the box and try opening it. \nI have no success, but notice a large hexagonal hole in the center of its cover. \nMaybe that disk I found earlier will open the box? \nShould I give it a try?");
+							seenWalnutChest = true;
+							System.out.println("\nPossible Moves:\n(1) Yes. \n(2) No.");
+							answer = scan.nextLine();
+							
+							if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("1") || answer.equalsIgnoreCase("(1)"))
+							{
+								System.out.println("I pull the disk out of my bag and insert it into the top of the chest. \nIt's a perfect fit. \nI hear an internal mechanism click, popping the chest open. \nInside I find a crystal clear key. \nI will definitely bring this with me.");
+								System.out.println("The crystal key is added to my backpack.");
+								backpack[1] = "crystal key";
+								masterBedroom();
+							}
+							else if (answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("2") || answer.equalsIgnoreCase("(2)"))
+							{
+								System.out.println("I decide to hold off on opening the box. \nWho knows, there may have been a trap within it.");
+								masterBedroom();
+							}	
+						}
+						else if (seenWalnutChest == true)
+						{
+							System.out.println("I approach the box and with the hexagonal hole. \nI bet that disk I found will open this chest. \nShould I give it a try?");
+							System.out.println("\nPossible Moves:\n(1) Yes. \n(2) No.");
+							answer = scan.nextLine();
+							
+							if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("1") || answer.equalsIgnoreCase("(1)"))
+							{
+								System.out.println("I pull the disk out of my bag and insert it into the top of the chest. \nIt's a perfect fit. \nI hear an internal mechanism click, popping the chest open. \nInside I find a crystal clear key. \nI will definitely bring this with me.");
+								System.out.println("The crystal key is added to my backpack.");
+								backpack[1] = "crystal key";
+								masterBedroom();
+							}
+							else if (answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("2") || answer.equalsIgnoreCase("(2)"))
+							{
+								System.out.println("I decide to hold off on opening the box. \nWho knows, there may have been a trap within it.");
+								masterBedroom();
+							}	
+						}
+					}
 				}
 				
-				else if (backpack [5] == "hexagonal disk")
+				else if (backpack [1] == "crystal key")
 				{
-					if (seenWalnutChest == false)
-					{
-						System.out.println("Immediately, a petite walnut chest to the side of the bed catches my eye. \nI approach the box and try opening it. \nI have no success, but notice a large hexagonal hole in the center of its cover. \nMaybe that disk I found earlier will open the box? \nShould I give it a try?");
-						seenWalnutChest = true;
-						System.out.println("\nPossible Moves:\n(1) Yes. \n(2) No.");
-						answer = scan.nextLine();
-						
-						if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("1") || answer.equalsIgnoreCase("(1)"))
-						{
-							System.out.println("I pull the disk out of my bag and insert it into the top of the chest. \nIt's a perfect fit. \nI hear an internal mechanism click, popping the chest open. \nInside I find a crystal clear key. \nI will definitely bring this with me.");
-							System.out.println("The crystal key is added to my backpack.");
-							backpack[1] = "crystal key";
-							masterBedroom();
-						}
-						else if (answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("2") || answer.equalsIgnoreCase("(2)"))
-						{
-							System.out.println("I decide to hold off on opening the box. \nWho knows, there may have been a trap within it.");
-							masterBedroom();
-						}	
-					}
-					else if (seenWalnutChest == true)
-					{
-						System.out.println("I approach the box and with the hexagonal hole. \nI bet that disk I found will open this chest. \nShould I give it a try?");
-						System.out.println("\nPossible Moves:\n(1) Yes. \n(2) No.");
-						answer = scan.nextLine();
-						
-						if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("1") || answer.equalsIgnoreCase("(1)"))
-						{
-							System.out.println("I pull the disk out of my bag and insert it into the top of the chest. \nIt's a perfect fit. \nI hear an internal mechanism click, popping the chest open. \nInside I find a crystal clear key. \nI will definitely bring this with me.");
-							System.out.println("The crystal key is added to my backpack.");
-							backpack[1] = "crystal key";
-							masterBedroom();
-						}
-						else if (answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("2") || answer.equalsIgnoreCase("(2)"))
-						{
-							System.out.println("I decide to hold off on opening the box. \nWho knows, there may have been a trap within it.");
-							masterBedroom();
-						}	
-					}
+					System.out.println("There doesn't appear to be anything else here.");
 				}
 			}
 			
-			else if (answer.equalsIgnoreCase("Open Inventory") || answer.equalsIgnoreCase("Inventory") || answer.equalsIgnoreCase("(8)") || answer.equalsIgnoreCase("8"))
+			else if (answer.equalsIgnoreCase("Open Inventory") || answer.equalsIgnoreCase("Inventory") || answer.equalsIgnoreCase("(4)") || answer.equalsIgnoreCase("4"))
 			{
 				openInventory();
 			}
@@ -1154,7 +1254,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the master bathroom. There is nothing of value here at this position. From the master bathroom, the player can move to the
+	 * 	 kitchen or the garage.
+	 *   The boolean variable firstMasterBathroom is used to change dialogue.
+	 */
 	public void masterBathroom()
 	{
 		stationary = true;
@@ -1206,7 +1310,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the backyard. From this position, there isn't anything that changes the game. 
+	 *   From this position, the player can move to the kitchen or to the dog house.
+	 *   The boolean variable firstBackyard is used to change dialogue.
+	 */
 	public void backyard()
 	{
 		stationary = true;
@@ -1255,7 +1363,13 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is used to move the player to the dog house in the backyard. At this position, the player can find the hexagonal disk used to get the crystal key.
+	 *   When trying to grab the hexagonal disk, the player will be bit by the dog, getting the dogBite status effect unless the player has the pork knuckle.
+	 *   From this position, the player can move to the backyard.
+	 *   If the player also has the good boy toy, a secret dialogue commences. 
+	 *   The boolean variable firstDogHouse is used here. 
+	 */
 	public void dogHouse()
 	{
 		stationary = true;
@@ -1373,7 +1487,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the western hallway in the house. From this position, the player can move to the garage, the master bathroom or the kitchen. 
+	 *   There are not any game changing actions found at this position.
+	 */
 	public void leftHallway()
 	{
 		stationary = true;
@@ -1419,7 +1536,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the garage. From the garage, the player must find the silver key inside of the garageSafe. 
+	 *  This method uses the boolean variables firstGarage and safeOpen to change dialogue.
+	 */
 	public void garage()
 	{
 		stationary = true;
@@ -1517,6 +1637,10 @@ public class House extends Inventory
 	
 	
 	
+	/**
+	 * This method is called when the player attempts to unlock the digital safe found in the garage. The safe scans the users input and compares it to the actual 
+	 *  string containing the correct passcode. If the user gives the correct password, the safe is opened. If not, the safe gives the option to try again. 
+	 */
 	
 	public void garageSafe()
 	{
@@ -1558,6 +1682,13 @@ public class House extends Inventory
 				Start of methods for Basement portion of game.
 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 	
+	
+	/**
+	 * This is the method is called to move the player down to the basement - position x = 0 , y = 0. From this location, the player will find themselves looking in two different directions.
+	 *   There are two hidden passages as well here. The player will require the sledgehammer in their inventory to go to the hidden passages. 
+	 *   The boolean variable justReachBasement, justStartSearch, wallEastBroken, wallWestBroken are all used to change the text printed.
+	 *   (0,0)
+	 */
 	public void baseOrigin() 
 	{		
 		x = 0;
@@ -1707,7 +1838,11 @@ public class House extends Inventory
 	
 	
 	
-
+	/**
+	 * This method is called to move the player to the basement position x = 0 , y = 1. At this location, nothing game changing is found.
+	 *   The boolean variable justMovingIn is used to alter dialogue. 
+	 *   (0,1)
+	 */
 	public void base01()
 	{
 		x = 0;
@@ -1720,7 +1855,7 @@ public class House extends Inventory
 			System.out.println("As I look around me, there appears to be nothing but smooth stone walls. \nHow will I find my way around this labyrinth?");
 			justMovingIn = true;
 		}
-		else
+		else if (justMovingIn == true)
 		{
 			System.out.println("Around me, nothing has changed. \nThere appears to be nothing but the same cold stone walls. \nI can see the staircase nearby.");
 		}
@@ -1771,7 +1906,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position x = 1 , y = 1. At this location, nothing game changing is found.
+	 *   The boolean variable feelingLost is used to alter dialogue. 
+	 *   (1,1)
+	 */
 	public void base11()
 	{
 		x = 1;
@@ -1780,10 +1919,10 @@ public class House extends Inventory
 		
 		if (feelingLost == false)
 		{
-			System.out.println("Wow! I am already beginning to feel completely lost... \nAround me, I see nothing but ragid stone walls.");
+			System.out.println("Wow! I am already beginning to feel completely lost... \nAround me, I see nothing but ragged stone walls.");
 			feelingLost = true;
 		}
-		else
+		else if (feelingLost == true)
 		{
 			System.out.println("Nothing appears to have changed since I was last here; there are plain stone walls everywhere.");
 		}
@@ -1827,7 +1966,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position x = 1 , y = 2. At this location, the sledgehammer is found.
+	 *   (1,2)
+	 */
 	public void base12()
 	{
 		//Has sledgehammer
@@ -1934,7 +2076,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position x = -1 , y = 1. At this location, nothing game changing is found.
+	 *   (-1,1)
+	 */
 	public void  baseNeg11()
 	{
 		x = -1;
@@ -1989,7 +2134,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position x = -1 , y = 2. At this location, nothing game changing is found.
+	 *   (-1,2)
+	 */
 	public void baseNeg12()
 	{
 		x = -1;
@@ -2030,7 +2178,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position x = -2 , y = 1. At this location, nothing game changing is found.
+	 *   (-2,1)
+	 */
 	public void baseNeg21()
 	{
 		x = -2;
@@ -2085,7 +2236,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position x = -2 , y = 2. At this location, nothing game changing is found.
+	 *   (-2,2)
+	 */
 	public void baseNeg22()
 	{
 		x = -2;
@@ -2135,7 +2289,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position x = -3 , y = 2. The dog toy can be discovered at this location. Different dialogue options are 
+	 * 	 displayed if the player has the dog toy vs not.
+	 *   (-3,2)
+	 */
 	public void baseNeg32()
 	{
 		//Has goodBoyToy
@@ -2242,7 +2400,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position x = -2 , y = 3. At this location, nothing game changing is found.
+	 *   (-2,3)
+	 */
 	public void baseNeg23()
 	{
 		x = -2;
@@ -2278,7 +2439,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position x = -2 , y = 0. At this location, nothing game changing is found
+	 *   (-2,0)
+	 */
 	public void baseNeg20()
 	{
 		x = -2;
@@ -2326,7 +2490,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position x = -1 , y = -0. At this location, nothing game changing is found.
+	 *   The boolean variable justMovingIn is used to alter dialogue. 
+	 *   (-1,0)
+	 */
 	public void baseNeg10()
 	{
 		x = -1;
@@ -2364,7 +2532,7 @@ public class House extends Inventory
 			
 			else if (answer.equalsIgnoreCase("Move South") || answer.equalsIgnoreCase("South") || answer.equalsIgnoreCase("S") || answer.equalsIgnoreCase("3") || answer.equalsIgnoreCase("(3)"))
 			{
-				System.out.println("I make my south.");
+				System.out.println("I make my way south.");
 				stationary = false;
 				baseNeg1Neg1();
 			}
@@ -2391,10 +2559,15 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position x = -1 , y = -1. At this position, the player will discover the tattered may that hints at hidden 
+	 *   passages by the stair case in the basement.
+	 *   Uses the boolean variable justSeeingMap to alter dialogue.
+	 *  (-1,-1)
+	 */
 	public void baseNeg1Neg1()
 	{
-		//This position has basementMap in it.
+		
 		x = -1;
 		y = -1;
 		stationary = true;
@@ -2441,7 +2614,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position at x = 0  , y = -1. There are no game changing interactions at this position.
+	 *   The boolean variable enterBrokenWall is used here to change dialogue.
+	 *   (0,-1)
+	 */
 	public void base0Neg1()
 	{
 		x = 0;
@@ -2505,7 +2682,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position at x = 0 , y = -2. There are no game changing interactions at this position.
+	 *   (0,-2)
+	 */
 	public void base0Neg2()
 	{
 		x = 0;
@@ -2553,7 +2733,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position at x = -1 , y = -2. There are no game changing interactions at this position.
+	 *   The boolean variable Neg1Neg2Disc is used here to give different dialogues.
+	 *   (-1,-2)
+	 */
 	public void baseNeg1Neg2()
 	{
 		x = -1;
@@ -2562,10 +2746,10 @@ public class House extends Inventory
 		
 		System.out.println("Once again, I am positioned at a 'T' in the passageway. ");
 		
-		if (Neg1Neg2Desc == false)
+		if (Neg1Neg2Disc == false)
 		{
 			System.out.print("The same vile fluid seen previously is unavoidable now. \nI am forced to walk through it. \nI hold my breath as I take my first steps.");
-			Neg1Neg2Desc = true;
+			Neg1Neg2Disc = true;
 		}
 		else
 		{
@@ -2574,7 +2758,7 @@ public class House extends Inventory
 		
 		while (stationary == true)
 		{
-			System.out.println("\nPossible Moves:\n(1) Move West \n(2) Move South \n(3) Move East \n(4) Look Up \n(5) Feel Walls \n(6) Open Inventory");
+			System.out.println("\n\nPossible Moves:\n(1) Move West \n(2) Move South \n(3) Move East \n(4) Look Up \n(5) Feel Walls \n(6) Open Inventory");
 				answer = scan.nextLine();
 			
 			if (answer.equalsIgnoreCase("Move South") || answer.equalsIgnoreCase("South") || answer.equalsIgnoreCase("S") || answer.equalsIgnoreCase("(2)") || answer.equalsIgnoreCase("2"))
@@ -2618,7 +2802,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position x = -1 , y = -3. At this location, the golden key can be found. 
+	 *  The boolean variable Neg1Neg3Disc is used to alter text.
+	 *  (-1,-3)
+	 */
 	public void baseNeg1Neg3()
 	{
 		//Has goldKey
@@ -2629,8 +2817,15 @@ public class House extends Inventory
 		
 		while (backpack[3] != "gold key")
 		{
-			System.out.println("I reach a dead end which has corpses piled along every wall. \nThe same substance I've been trudging through oozes from their pores. \nDespite how much I want to turn around, there has to be something of value over there."
-					+ "\nShould I take a better look?");
+			if (Neg1Neg3Disc == false)
+			{
+			System.out.println("I reach a dead end which has corpses piled along every wall. \nThe same substance I've been trudging through oozes from their pores. \nDespite how much I want to turn around, there has to be something of value over there. \nShould I take a better look?");
+				Neg1Neg3Disc = true;
+			}
+			else if (Neg1Neg3Disc == true)
+			{
+				System.out.println("I am now positioned in the hallway with the oozing corpses. \nShould I search around for something?");
+			}
 			System.out.println("\nPossible Moves:\n(1) Yes. \n(2) No.");
 				answer = scan.nextLine();
 			
@@ -2726,7 +2921,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position at x = -2 , y = -2. There are no game changing interactions at this position.
+	 *   (-2,-2)
+	 */
 	public void baseNeg2Neg2()
 	{
 		x = -2;
@@ -2767,7 +2965,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position at x = 1 , y = -1. There are no game changing interactions at this position.
+	 *   (1,-1)
+	 */
 	public void base1Neg1()
 	{
 		x = 1;
@@ -2822,7 +3023,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position at x = 2 , y = 1. There are no game changing interactions at this position.
+	 *   (2,1)
+	 */
 	public void base2Neg1()
 	{
 		x = 2;
@@ -2863,7 +3067,11 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position at x = 1 , y = 0. There are no game changing interactions at this position.
+	 * 	 The boolean value enterBrokenWall is used in this method.
+	 *   (1,0)
+	 */
 	public void base10()
 	{
 		x = 1;
@@ -2926,7 +3134,10 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the basement position at x = 2 , y = 0. There are no game changing interactions at this position.
+	 *   (2,0)
+	 */
 	public void base20()
 	{
 		x = 2;
@@ -2982,10 +3193,15 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the coordinate position x = 2 , y = 1 in the basement. At this position, the player can
+	 * 	will find themselves standing in front of the spike trap. Within this method, Math.random() is used to generate a random value to give the player
+	 * 	the opportunity to safely jump across the spike trap if they are lucky. In addition, the variable dogBite is incorporated into the jump success chance.
+	 * 	If the player was bit by the dog, they only have a 20% chance of success versus 50% if they hadn't been bit.
+	 *  (2,1)
+	 */
 	public void base21()
 	{
-		//Include spike trap if player moves to base31()
 		x = 2;
 		y = 1;
 		double random; //random is a double value which helps determine if the player falls in the spike trap when trying to jump across it.
@@ -2996,17 +3212,20 @@ public class House extends Inventory
 		{
 			if (firstSpikeTrap == false)
 			{
-				System.out.println("Woah. I better watch my step. \nIn front of me is a large pitfall trap. \nI can almost guarantee that those violent sounds I just heard came from some form of trap door covering this. \nI really don't think I could jump across this. \nTime to look around.");
+				//Dialogue option for player who has just seen spike trap, and the spike trap is still open.
+				System.out.println("Woah. I better watch my step. \nTo my right there is a large pitfall trap. \nI can almost guarantee that those violent sounds I just heard came from some form of trap door covering this. \nI really don't think I could jump across this. \nTime to look around.");
 				firstSpikeTrap = true;
 			}
 			else if (firstSpikeTrap == true)
 			{
-				if (switchLever == false) 
+				if (spikeTrapOff == false) 
 				{
+					//Dialogue option for player who has returned to the spike trap and has not turned the spike trap off.
 					System.out.println("I now stand on the western side of the open spike trap. \nWhere should I go next?");
 				}
-				else if (switchLever == true) 
+				else if (spikeTrapOff == true) 
 				{
+					//Dialogue option for player who has returned to the spike trap and has turned the trap off.
 					System.out.println("I now stand on the western side of the closed spike trap. \nWhere should I go next?");
 				}
 			}
@@ -3044,8 +3263,17 @@ public class House extends Inventory
 							if (random < 0.80)
 							{
 								System.out.println("I leap through the air, but fall short several feet causing me to plummit into the spikes below... \nAt least it was a quick death.");
-								System.out.println("\n\n\n\t====GAME OVER====");
-								System.exit(0);
+								
+								if (normalDifficulty == false)
+								{
+									System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
+									frontHouse();
+								}
+								else if (normalDifficulty == true)
+								{
+									System.out.println("\n\n\n\t====GAME OVER====");
+									restartGame();
+								}
 							}
 							else if (random >= 0.80)
 							{
@@ -3062,8 +3290,17 @@ public class House extends Inventory
 							if (random < 0.50)
 							{
 								System.out.println("I leap through the air, but fall short several feet causing me to plummit into the spikes below... \nAt least it was a quick death.");
-								System.out.println("\n\n\n\t====GAME OVER====");
-								System.exit(0);
+								
+								if (normalDifficulty == false)
+								{
+									System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
+									frontHouse();
+								}
+								else if (normalDifficulty == true)
+								{
+									System.out.println("\n\n\n\t====GAME OVER====");
+									restartGame();
+								}
 							}
 							else if (random >= 0.50)
 							{
@@ -3101,11 +3338,11 @@ public class House extends Inventory
 			}
 			else if (crossingSpikes == true)
 			{
-				if (switchLever == false) 
+				if (spikeTrapOff == false) 
 				{
 					System.out.println("I now stand on the western side of the open spike trap. \nWhere should I go next?");
 				}
-				else if (switchLever == true) 
+				else if (spikeTrapOff == true) 
 				{
 					System.out.println("I now stand on the western side of the closed spike trap. \nWhere should I go next?");
 				}			}
@@ -3156,23 +3393,31 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the coordinate position x = 2 , y = 2 in the basement. At this position, the player can
+	 * 	find the lever for turning off the spike trap at position x = 2 , y = 1.
+	 * (2,2)
+	 */
 	public void base22()
 	{
-		//Has lever for turning off spike traps
 		x = 2;
 		y = 2;
 		stationary = true;
 		
-		if (switchLever == false)
+		
+		if (visitLever == false)
 		{
+			//Dialogue option for player who has just arrived at position (2,2)
 			System.out.println("After a couple minutes of walking north, I stumble upon another dead end. \nHowever, there is a single lever on the wall with a skull and crossbones beneath it. \nI begin to worry that pulling it would trigger a trap leading to my imminent death. \nWhat should I do?");
-			switchLever = true;
+			visitLever = true;
 		}
-		else if (switchLever == true)
+		
+		else if (visitLever == true)
 		{
+			//Dialogue option for player who has returned to the position (2,2)
 			System.out.println("I return to the location of the lever with the skull and crossbones beneath it. \nWhat should I do?");
 		}
+		
 		while (stationary == true)
 		{
 			System.out.println("\nPossible Moves:\n(1) Flip the lever. \n(2) Return South. \n(3) Feel Walls. \n(4) Open Inventory.");
@@ -3186,9 +3431,10 @@ public class House extends Inventory
 		
 				if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("1") || answer.equalsIgnoreCase("(1)"))
 				{
+					//Different statements if the player wishes to pull the lever. The lever cannot be turned back off once activated.
 					if (spikeTrapOff == false) 
 					{
-						System.out.println("I pull down the lever, and to my surprise, nothing around me changes. \nWhere should I go next?");
+						System.out.println("I pull down the lever, and to my surprise, nothing around me changes. \nI should search around to see if the lever did anything. \nWhere should I go next?");
 						spikeTrapOff = true;
 					}
 					else if (spikeTrapOff == true)
@@ -3200,6 +3446,7 @@ public class House extends Inventory
 				
 				else if (answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("2") || answer.equalsIgnoreCase("(2)"))
 				{
+
 					System.out.println("I should turn around and look around this kingdom of corpses some more.");
 				}
 			}
@@ -3228,7 +3475,14 @@ public class House extends Inventory
 	
 	
 	
-	
+	/**
+	 * This method is called to move the player to the coordinate position x = 3 , y = 1 in the basement. At this position, the player can find the golden feather.
+	 * 	To acquire the golden feather, the player must possess all three keys found throughout the game. If not, the player is turned around and forced to search more.
+	 * 	At this position, the player will find themselves standing at the eastern side of the spike trap. Within this method, Math.random() is used to generate a 
+	 * 	random value to give the player the opportunity to safely jump across the spike trap if they are lucky. In addition, the variable dogBite is incorporated 
+	 * 	into the jump success chance. If the player was bit by the dog, they only have a 20% chance of success versus 50% if they hadn't been bit.
+	 *	(3,1)
+	 */
 	public void base31()
 	{
 		//Has golden feather	
@@ -3240,7 +3494,15 @@ public class House extends Inventory
 		
 		if (finalWallBroken == false)
 		{
-			System.out.println("I take a brief moment after having crossed the spike trap so my heart could settle. \nOnce calmed down a bit, I continue moving east to search for the feather. \nShortly after, I arrive at a dead end. \nI have a hard time believing that there is nothing more back here. \nI should look around.");
+			if (crossedTrapBefore == false)
+			{
+				System.out.println("I take a brief moment after having crossed the spike trap so my heart could settle. \nOnce calmed down a bit, I continue moving east to search for the feather. \nShortly after, I arrive at a dead end. \nI have a hard time believing that there is nothing more back here. \nI should look around.");
+				crossedTrapBefore = true;
+			}
+			else if (crossedTrapBefore == true && finalWallBroken == false)
+			{
+				System.out.println("I once again stand at the dead end on the eastern side of the spike trap. \nThis doesn't make any sense. \nThere has to be something here.");
+			}
 		}
 		else if (finalWallBroken == true)
 		{
@@ -3270,8 +3532,17 @@ public class House extends Inventory
 							if (random < 0.80)
 							{
 								System.out.println("I leap through the air, but fall short several feet causing me to plummit into the spikes below... \nAt least it was a quick death.");
-								System.out.println("\n\n\n\t====GAME OVER====");
-								System.exit(0);
+								
+								if (normalDifficulty == false)
+								{
+									System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
+									frontHouse();
+								}
+								else if (normalDifficulty == true)
+								{
+									System.out.println("\n\n\n\t====GAME OVER====");
+									restartGame();
+								}
 							}
 							else if (random >= 0.80)
 							{
@@ -3288,8 +3559,17 @@ public class House extends Inventory
 							if (random < 0.50)
 							{
 								System.out.println("I leap through the air, but fall short several feet causing me to plummit into the spikes below... \nAt least it was a quick death.");
-								System.out.println("\n\n\n\t====GAME OVER====");
-								System.exit(0);
+								
+								if (normalDifficulty == false)
+								{
+									System.out.println("\n\n\n\t====RESTARTING CHECKPOINT====\n\n\n");
+									frontHouse();
+								}
+								else if (normalDifficulty == true)
+								{
+									System.out.println("\n\n\n\t====GAME OVER====");
+									restartGame();
+								}
 							}
 							else if (random >= 0.50)
 							{
@@ -3335,7 +3615,7 @@ public class House extends Inventory
 						System.out.println("With shaking hands, I pull out a silver, a gold, and a crystal key. \nI socket them into their respective locks and the chest opens! \nI grab the delicate gold feather and secure it in a special container before finishing my mission.");
 						System.out.println("\n\n\n\t====CONGRATULATIONS====\n\t    ====YOU WIN====");
 						//finish game.
-						System.exit(0);
+						restartGame();
 					}
 					else if (backpack [1] != "crystal key" && backpack [2] == "silver key" && backpack [3] != "gold key")
 					{

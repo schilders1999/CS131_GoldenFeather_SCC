@@ -1,15 +1,15 @@
 /**
  * This class contains the code required for the player's inventory to store various strings (items) as well as display the inventory to the player when called.
+ * This class inherits from the gameFunctions class.
  * 
  * @author Spencer Childers
  * @version 1.0
- * @since 4/15/2021
+ * @since 15 April 2021
  */
-public class Inventory
+public class Inventory extends gameFunctions
 {
-	String [] backpack = new String [10];
-	public String answer;
-	public int timer;
+	String [] backpack = new String [10]; //This is the array used to store all of the items that the player finds throughout the game.
+	
 
 /* List of all items to be stored in the inventory:
  * 		0 House Blueprint
@@ -25,11 +25,21 @@ public class Inventory
  */	
 	
 	
+	/**
+	 * Empty constructor for Inventory class.
+	 */
 	public Inventory()
 	{
 		
 	}
 	
+	
+	
+	
+	/**
+	 * This method is used if the player wishes to open up their inventory to see which items they have collected throughout the game.
+	 * 	The method uses a for loop to print out the various items in the backpack array.
+	 */
 	public void openInventory()
 	{
 		int i;

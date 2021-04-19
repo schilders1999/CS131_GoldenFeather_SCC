@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.awt.*;  
 import javax.swing.*;  
 /**
@@ -6,9 +5,9 @@ import javax.swing.*;
  * 
  * @author Spencer Childers
  * @version 1.0
- * @since 4/15/2021
+ * @since 18 April 2021
  */
-public class RunGame
+public class RunGame extends House
 {	
 	public static void main(String[] args)
 	{
@@ -44,10 +43,12 @@ public class RunGame
 		basement.setVisible(true);
 		basement.add(subPanel2);
 		
-		//Instantiating a game object so the game starts.
-        House yoyo = new House();
-			
-		
+		//Instantiating a gameFunctions object so that the startGame method can be called to instantiate a Golden Feather game object.
+		gameFunctions game = new gameFunctions();
+		game.startGame();
+       
+        
+       
 
 	}
 }
