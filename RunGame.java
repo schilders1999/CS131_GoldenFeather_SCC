@@ -1,6 +1,6 @@
  
 /**
- * This is the application class required to start the game. In addition, there is code required to display images of the game's maps.
+ * This is the application class required to start the game.
  * 
  * @author Spencer Childers
  * @version 1.0
