@@ -6,7 +6,7 @@
  * @version 1.0
  * @since 18 April 2021
  */
-public class RunGame extends House
+public class RunGame
 {	
 	public static void main(String[] args)
 	{

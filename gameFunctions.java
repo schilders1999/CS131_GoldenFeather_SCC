@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*; 
 /**
  * This class contains some of the methods necessary for starting and ending the game, a method that allows the user to set their desired difficulty
- *   at the start of the game, and a method to display the games' maps.
+ *   at the start of the game, and a method to display the games' maps. 
  * 
  * @author  Spencer Childers
  * @version  1.0
@@ -80,8 +80,9 @@ public class gameFunctions
 			{
 				System.out.println("\n\n\n\t====RESTARTING GAME====");
 				setDifficulty();
+				
 				try {
-					House yaya = House.class.newInstance();
+					House yaya = House.class.newInstance(); //Creating a new game instance.
 				} catch (InstantiationException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -8,49 +8,48 @@
  */
 public class House extends Inventory
 {
-	public boolean stationary; //boolean value that is inserted into while loops at the different locations in the game. When true, the various while loops break.
+	private boolean stationary; //boolean value that is inserted into while loops at the different locations in the game. When true, the various while loops break.
 	
 	//House Modifiers:
-	public boolean powerOff; //boolean value for the power supplied to the electrical knob in the front bathroom. If true, the power supplied to the knob is off.
-	public boolean dogBite; //boolean value for whether or not the play has been bit by the dog in the backyard. If true, the player has been bit.
-	public boolean pictureFrameOff; //boolean value that changes the script of the game. True if the player has discovered the knob leading to the secret basement.
-	public boolean approachHouse; //boolean value that changes the script of when the player first approaches the front door.
-	public boolean findFuseBox; //boolean value that changes the dialogue after the player first discovers the electrical box on the western side of the house.
-	public boolean firstRightSideWindow; //boolean value that changes the dialogue after the player first discovers the window leading to the child's room.
-	public boolean firstBedroomEntrance; //boolean value that changes the dialogue after the player first enters the child's bedroom.
-	public boolean firstBedroomBottomRight;  //boolean value that changes the dialogue after the player first discovers the smelly bedroom on the bottom right of the house.
-	public boolean firstFrontBathroom;  //boolean value that changes the dialogue after the player first discovers the bathroom at the front of the house.
-	public boolean firstKitchen;  //boolean value that changes the dialogue after the player first discovers the kitchen.
-	public boolean firstLivingRoom;  //boolean value that changes the dialogue after the player first discovers the living room.
-	public boolean firstMasterBedroom;  //boolean value that changes the dialogue after the player first discovers the master bedroom.
-	public boolean firstMasterBathroom;  //boolean value that changes the dialogue after the player first discovers the master bathroom.
-	public boolean firstGarage;  //boolean value that changes the dialogue after the player first discovers the garage.
-	public boolean firstBackyard;  //boolean value that changes the dialogue after the player first discovers the backyard.
-	public boolean firstDogHouse;  //boolean value that changes the dialogue after the player first encounters the dog house.
-	public boolean secretPassageFound;  //boolean value that changes the dialogue after the player first opens the door to the secret passage.
-	public boolean seenWalnutChest;  //boolean value that changes the dialogue after the player first tries to inspect the walnut chest in the master bedroom.
-	public boolean safeOpen;  //boolean value that changes the dialogue of entering the garage after the safe has been opened.
+	private boolean powerOff; //boolean value for the power supplied to the electrical knob in the front bathroom. If true, the power supplied to the knob is off.
+	private boolean dogBite; //boolean value for whether or not the play has been bit by the dog in the backyard. If true, the player has been bit.
+	private boolean pictureFrameOff; //boolean value that changes the script of the game. True if the player has discovered the knob leading to the secret basement.
+	private boolean approachHouse; //boolean value that changes the script of when the player first approaches the front door.
+	private boolean findFuseBox; //boolean value that changes the dialogue after the player first discovers the electrical box on the western side of the house.
+	private boolean firstRightSideWindow; //boolean value that changes the dialogue after the player first discovers the window leading to the child's room.
+	private boolean firstBedroomEntrance; //boolean value that changes the dialogue after the player first enters the child's bedroom.
+	private boolean firstBedroomBottomRight;  //boolean value that changes the dialogue after the player first discovers the smelly bedroom on the bottom right of the house.
+	private boolean firstFrontBathroom;  //boolean value that changes the dialogue after the player first discovers the bathroom at the front of the house.
+	private boolean firstKitchen;  //boolean value that changes the dialogue after the player first discovers the kitchen.
+	private boolean firstLivingRoom;  //boolean value that changes the dialogue after the player first discovers the living room.
+	private boolean firstMasterBedroom;  //boolean value that changes the dialogue after the player first discovers the master bedroom.
+	private boolean firstMasterBathroom;  //boolean value that changes the dialogue after the player first discovers the master bathroom.
+	private boolean firstGarage;  //boolean value that changes the dialogue after the player first discovers the garage.
+	private boolean firstBackyard;  //boolean value that changes the dialogue after the player first discovers the backyard.
+	private boolean firstDogHouse;  //boolean value that changes the dialogue after the player first encounters the dog house.
+	private boolean secretPassageFound;  //boolean value that changes the dialogue after the player first opens the door to the secret passage.
+	private boolean seenWalnutChest;  //boolean value that changes the dialogue after the player first tries to inspect the walnut chest in the master bedroom.
+	private boolean safeOpen;  //boolean value that changes the dialogue of entering the garage after the safe has been opened.
 		
 	//Basement modifiers:
-	public int x,y;  //integer values for the various positions of the basement. 
-	public boolean spikeTrapOff;  //boolean value that changes the dialogue after the player has turned off the spike trap. This is used once the player returns to the trap.
-	public boolean wallEastBroken;  //boolean value that is true if the eastern wall by the stairs in the basement is broken.
-	public boolean wallSouthBroken;  //boolean value that is true if the southern wall by the stairs in the basement is broken.
-	public boolean startOfSearch;  //boolean value that changes the dialogue after the player first leaves the stairwell in the basement.
-	public boolean justMovingIn;  //boolean value that changes the dialogue after the player first arrives at one of the two possible movable locations from the basement stairwell.
-	public boolean justReachBasement;  //boolean value that changes the dialogue after the player first enters the basement.
-	public boolean feelingLost;  //boolean value that changes the dialogue after the player first reaches position (1,1) in the basement.
-	public boolean enterBrokenWall;  //boolean value that changes the dialogue after the player first enters one of the passages hidden behind the broken walls by the stairs in the basement.
-	public boolean Neg1Neg2Disc;  //boolean value that changes the dialogue after the player enters position (-1,-2) in the basement.
-	public boolean Neg1Neg3Disc;  //boolean value that changes the dialogue after the player enters position (-1,-3) in the basement.
-	public boolean justSeeingMap; //boolean value that changes the dialogue after the player first discovers the map in the basement indicating there are hidden passages.
-	public boolean spikeTrapFirstTime; //boolean value that turns true once the player hears the sound of the spike trap activating.
-	public boolean crossingSpikes; //boolean value that gives different dialogue options for if the player has seen that the lever has closed the spike trap.
-	public boolean crossedTrapBefore; //boolean value that gives different dialogue options for if the player has crossed the spike trap before.
-	public boolean hasGoldFeather; //boolean value for determining if player has acquired the golden feather. If true, the game terminates, congratulating the player on their victory.
-	public boolean firstSpikeTrap; //boolean value that is false if the player hasn't seen the spike trap before. Turns true after seeing trap.
-	public boolean visitLever; //boolean value for having visited the lever in the basement before.
-	public boolean finalWallBroken; //boolean value that changes the dialogue after the player first breaks the wall concealing the golden feather.
+	private int x,y;  //integer values for the various positions of the basement. 
+	private boolean spikeTrapOff;  //boolean value that changes the dialogue after the player has turned off the spike trap. This is used once the player returns to the trap.
+	private boolean wallEastBroken;  //boolean value that is true if the eastern wall by the stairs in the basement is broken.
+	private boolean wallSouthBroken;  //boolean value that is true if the southern wall by the stairs in the basement is broken.
+	private boolean startOfSearch;  //boolean value that changes the dialogue after the player first leaves the stairwell in the basement.
+	private boolean justMovingIn;  //boolean value that changes the dialogue after the player first arrives at one of the two possible movable locations from the basement stairwell.
+	private boolean justReachBasement;  //boolean value that changes the dialogue after the player first enters the basement.
+	private boolean feelingLost;  //boolean value that changes the dialogue after the player first reaches position (1,1) in the basement.
+	private boolean enterBrokenWall;  //boolean value that changes the dialogue after the player first enters one of the passages hidden behind the broken walls by the stairs in the basement.
+	private boolean Neg1Neg2Disc;  //boolean value that changes the dialogue after the player enters position (-1,-2) in the basement.
+	private boolean Neg1Neg3Disc;  //boolean value that changes the dialogue after the player enters position (-1,-3) in the basement.
+	private boolean justSeeingMap; //boolean value that changes the dialogue after the player first discovers the map in the basement indicating there are hidden passages.
+	private boolean spikeTrapFirstTime; //boolean value that turns true once the player hears the sound of the spike trap activating.
+	private boolean crossingSpikes; //boolean value that gives different dialogue options for if the player has seen that the lever has closed the spike trap.
+	private boolean crossedTrapBefore; //boolean value that gives different dialogue options for if the player has crossed the spike trap before.
+	private boolean firstSpikeTrap; //boolean value that is false if the player hasn't seen the spike trap before. Turns true after seeing trap.
+	private boolean visitLever; //boolean value for having visited the lever in the basement before.
+	private boolean finalWallBroken; //boolean value that changes the dialogue after the player first breaks the wall concealing the golden feather.
 	
 	
 	
@@ -99,7 +98,6 @@ public class House extends Inventory
 		spikeTrapFirstTime = false;
 		crossingSpikes = false;
 		finalWallBroken = false;
-		hasGoldFeather = false;
 		firstSpikeTrap = false;
 		visitLever = false; 
 		crossedTrapBefore = false;
